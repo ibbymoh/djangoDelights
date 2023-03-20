@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block title %} Ingredient list {% endblock %}
+
+{% block content %}
+     <h1> Ingredients </h1>
+    <table>
+        <tr>
+            <th> Item </th>
+            <th> Price (£) </th>
+            <th> Amount </th>
+            <th> Delete </th>
+            <th> Edit </th>
+        </tr>
+        {% for item in object_list %}
+        <tr>
+            <td> {{ item.name }} </td>
+            <td> {{ item.price }} </td>
+            <td> {{ item.quantity }} </td>
+            <td> <a href="{% url 'ingredient-delete' item.slug %}"> Delete </a> <td>
+            <td> <a href="{% url 'ingredient-update' item.slug %}">  Update </a> <td>
+
+        </tr>
+
+        {% endfor %}
+    </table>
+    <td> <a href="{% url 'ingredient-add'%}">  Add </a> <td>
+{% endblock %}

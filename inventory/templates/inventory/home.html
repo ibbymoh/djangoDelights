@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} HOME {% endblock %}
+
+
+ {% block content %}
+<div class="container py-auto my-auto" id='HomeRow'>
+   <div class="row my-auto">
+       <div class="col-lg-4 col-sm-12 ">
+            <div class="card border-dark">
+                <img class="card-img-top " src="{% static 'inventory/ingredients.png'%}" alt="">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Ingredients</h5>
+                    <p class="card-text"> Ingredients currently in the inventory</p>
+                    <a href="{% url 'ingredients-list' %}" class="btn btn-primary mt-auto">Ingredients</a>
+                </div>
+            </div>
+       </div>
+
+       <div class="col-lg-4 col-sm-12 ">
+            <div class="card border-dark">
+                <img class="card-img-top " src="{% static 'inventory/purchases.png'%}" alt="">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Purchases</h5>
+                    <p class="card-text"> View a list of all purchases made </p>
+                    <a href="{% url 'purchases' %}" class="btn btn-primary mt-auto">Ingredients</a>
+                </div>
+            </div>
+       </div>
+
+
+       <div class="col-lg-4 col-sm-12">
+            <div class="card border-dark">
+                <img class="card-img-top" src="{% static 'inventory/menu.png'%}" alt="">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Menu items </h5>
+                    <p class="card-text">View a list of all items currently on the menu</p>
+                    <a href="{% url 'menu-item-list' %}" class="btn btn-primary mt-auto">Menu items </a>
+                </div>
+            </div>
+       </div>
+   </div>
+</div>
+{% endblock %}
+

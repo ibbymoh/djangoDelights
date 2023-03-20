@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ingredient list</title>
+</head>
+<body>
+     <h1> Menu Items </h1>
+    <table>
+        <tr>
+            <th> Item </th>
+            <th> Price (£) </th>
+            <th> Requirements </th>
+            <th> Purchase </th>
+<!--            <th> Delete </th>-->
+<!--            <th> Edit </th>-->
+        </tr>
+        {% for object in object_list %}
+        <tr>
+            <td> {{ object.name }} </td>
+            <td> {{ object.price }} </td>
+            <td><a href="{% url 'view-requirements' name=object.name %}"> view</a><td>
+
+            <td> <a href="{% url 'purchase-item' name=object.name price=object.price %}"> Purchase </a></td>
+
+
+        </tr>
+        {% endfor %}
+    </table>
+     <a href="{% url 'menu-item-add'%}">  Add </a>
+     <a href="{% url 'logout' %}"> Logout </a>
+
+</body>
+</html>

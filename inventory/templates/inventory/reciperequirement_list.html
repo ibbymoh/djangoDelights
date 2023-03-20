@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ingredient list</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th> Ingredients </th>
+            <th> Edit </th>
+
+        </tr>
+      {% for object in object_list %}
+        <tr>
+            <td>
+                <li> {{object.quantity}} {{object.ingredient.unit}} {{ object.ingredient.name }} </li>
+            </td>
+            <td>
+                <a href="{% url 'update-requirements' object.menu_item.name object.slug%}"> Update  </a> &nbsp <a href="{% url 'delete-requirement' object.menu_item.name object.slug%}"> Delete </a>
+
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+<!--    slug=object.ingredient.name item_name=object.menu_item.name-->
+
+    <form action="" method="POST" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type='submit' value='ADD'/>
+    </form>
+    <h4> Note that ingredients must be added to the inventory before they can be added to a recipe</h4>
+    <a href="{% url 'ingredient-add'%}"> Add to inventory here </a>
+
+</body>
+</html>
