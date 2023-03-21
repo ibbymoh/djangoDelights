@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 
 {% extends 'base.html' %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ingredient list</title>
-</head>
-<body>
+
+    {% block title%} Menu item list{% endblock %}
+
+    {% block content %}
+<div class="d-flex justify-content-center">
+
      <h1> Menu Items </h1>
-    <table>
+    </div>
+<div class="table-responsive ">
+    <table class="table table-hover mx-auto w-75">
         <tr>
             <th> Item </th>
             <th> Price (£) </th>
@@ -21,16 +23,16 @@
         <tr>
             <td> {{ object.name }} </td>
             <td> {{ object.price }} </td>
-            <td><a href="{% url 'view-requirements' name=object.name %}"> view</a><td>
+            <td><a href="{% url 'view-requirements' name=object.name %}"> <button type="button" class="btn btn-outline-dark">View</button></a></td>
 
-            <td> <a href="{% url 'purchase-item' name=object.name price=object.price %}"> Purchase </a></td>
+            <td> <a href="{% url 'purchase-item' name=object.name price=object.price %}"> <button type="button" class="btn btn-outline-dark"> Purchase </button></a></td>
 
 
         </tr>
         {% endfor %}
     </table>
-     <a href="{% url 'menu-item-add'%}">  Add </a>
-     <a href="{% url 'logout' %}"> Logout </a>
+</div>
+<div class="d-flex justify-content-center"> <a href="{% url 'menu-item-add'%}"> <button type="button" class="btn btn-outline-success">Add</button> </a></div>
 
-</body>
-</html>
+
+{% endblock %}

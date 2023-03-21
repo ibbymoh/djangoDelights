@@ -3,8 +3,11 @@
 {% block title %} Ingredient list {% endblock %}
 
 {% block content %}
+<div class="d-flex justify-content-center">
      <h1> Ingredients </h1>
-    <table>
+</div>
+<div class="table-responsive ">
+    <table class="table table-hover mx-auto w-75 ">
         <tr>
             <th> Item </th>
             <th> Price (£) </th>
@@ -17,12 +20,15 @@
             <td> {{ item.name }} </td>
             <td> {{ item.price }} </td>
             <td> {{ item.quantity }} </td>
-            <td> <a href="{% url 'ingredient-delete' item.slug %}"> Delete </a> <td>
-            <td> <a href="{% url 'ingredient-update' item.slug %}">  Update </a> <td>
+            <td> <a href="{% url 'ingredient-delete' item.slug %}"> <button type="button" class="btn btn-outline-danger">Delete</button> </a> </td>
+            <td> <a href="{% url 'ingredient-update' item.slug %}"> <button type="button" class="btn btn-outline-dark">Update</button> </a> </td>
 
         </tr>
 
         {% endfor %}
     </table>
-    <td> <a href="{% url 'ingredient-add'%}">  Add </a> <td>
+
+</div>
+<div class="d-flex justify-content-center"> <a href="{% url 'ingredient-add'%}">  <button type="button" class="btn btn-outline-success">Add</button> </a></div>
+
 {% endblock %}
