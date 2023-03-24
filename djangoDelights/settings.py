@@ -40,12 +40,14 @@ INSTALLED_APPS = [
     'inventory.apps.InventoryConfig',
     'users',
     'bootstrap5',
+    'crispy_forms',
+    'crispy_bootstrap5',
 
 ]
 AUTH_USER_MODEL = 'users.User'
 LOGIN_URL = 'login'
 STATIC_URL = 'inventory/static/'
-
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -1,23 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ingredient list</title>
-</head>
-<body>
-    <table>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Add menu item {% endblock %}
+
+{% block content %}
+
+<div class="container h-100">
+
+    <div class="table-responsive ">
+    <table class="table table-hover mx-auto w-75 ">
         <tr>
             <th> Ingredients </th>
             <th> Edit </th>
-
         </tr>
-      {% for object in object_list %}
+        {% for item in object_list %}
         <tr>
             <td>
-                <li> {{object.quantity}} {{object.ingredient.unit}} {{ object.ingredient.name }} </li>
+                <li> {{item.quantity}} {{item.ingredient.unit}} {{item.ingredient.name }} </li>
             </td>
             <td>
-                <a href="{% url 'update-requirements' object.menu_item.name object.slug%}"> Update  </a> &nbsp <a href="{% url 'delete-requirement' object.menu_item.name object.slug%}"> Delete </a>
+                <a href="{% url 'update-requirements' item.menu_item.name item.slug  %}"> <button type="button" class="btn btn-dark">Update</button> </a>
+
+                &nbsp <a href="{% url 'delete-requirement' item.menu_item.name item.slug %}"> <button type="button" class="btn btn-danger">Delete</button></a>
 
             </td>
         </tr>
@@ -25,15 +29,36 @@
 
     </table>
 
-<!--    slug=object.ingredient.name item_name=object.menu_item.name-->
+</div>
 
-    <form action="" method="POST" >
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type='submit' value='ADD'/>
-    </form>
-    <h4> Note that ingredients must be added to the inventory before they can be added to a recipe</h4>
-    <a href="{% url 'ingredient-add'%}"> Add to inventory here </a>
+    <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-10 col-md-8 col-lg-6">
+  <form action ="" method="post">
+    {% csrf_token %}
+    <div class="form-row ">
+      <div class="form-group">
+    {{ form.ingredient|as_crispy_field }}
+      </div>
 
-</body>
-</html>
+    </div>
+      <div class="form-row ">
+      <div class="form-group">
+        {{ form.quantity|as_crispy_field }}
+      </div>
+    </div>
+
+
+        <button type="submit" class="btn btn-success w-100"> Add </button>
+
+
+  </form>
+         <p> If you cannot find an ingredient listed then please add to the inventory first below  </p>
+    <a href="{% url 'ingredient-add'%}"> <button type="submit" class="btn btn-dark w-100"> Add to inventory </button></a>
+    </div>
+  </div>
+
+</div>
+
+
+
+{% endblock %}

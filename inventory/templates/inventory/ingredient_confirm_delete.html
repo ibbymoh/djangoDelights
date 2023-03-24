@@ -1,16 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> Delete</title>
-</head>
-<body>
-  <form method="post">
-    {% csrf_token %}
-    <p> Are you sure that you want to delete "{{ object }}" ? </p>
-    {{ form }}
-    <input type="submit" value="yes please !">
-  </form>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
 
-</body>
-</html>
+
+
+{% block content %}
+
+
+<div class="container h-100" style="padding-top: 20%">
+
+  <div class="row h-100 justify-content-center align-items-center" >
+       <h1>Are you sure you want to delete {{object}} from ingredients inventory?   </h1>
+    <div class="col-1 ">
+
+      <form method="post">
+        {% csrf_token %}
+
+        {{ form }}
+        <input type="submit" value="Delete"class="btn btn-danger"> </button>
+      </form>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+

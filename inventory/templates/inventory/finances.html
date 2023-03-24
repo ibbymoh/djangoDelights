@@ -4,6 +4,30 @@
 {% block title%} Finances {% endblock %}
 
 {% block content %}
-<h1> Total revenue: {{ revenue }} </h1>
-<h1> Total cost: {{ cost }} </h1>
+
+<div class="container py-auto my-auto" >
+   <div class="row my-auto"  id='FinancesRow'>
+
+
+       <div class="col-lg-6 col-sm-12">
+            <div class="card border-dark">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Costs</h5>
+                    <p class="card-text">  Total cost: {{ cost }}  </p>
+                </div>
+            </div>
+       </div>
+
+       <div class="col-lg-6 col-sm-12">
+            <div class="card border-dark">
+
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Revenue</h5>
+                    <p class="card-text"> Total revenue: {{ revenue }}</p>
+                </div>
+            </div>
+       </div>
+
+   </div>
 {% endblock %}
+
