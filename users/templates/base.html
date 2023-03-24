@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+
+<link href="{% static 'inventory/static.css' %}" rel="stylesheet"/>
+</head>
+<body class="bg-light">
+
+<nav class="navbar">
+    <div class="container-fluid justify-content-center">
+        <nav class="navbar navbar-light bg-light me-auto">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'inventory/barcode.png'%}" width="60" height="30" class="d-inline-block" alt="">
+                    Inventory Manager
+            </a>
+        </nav>
+      <ul class="nav">
+          <li class="nav-item">
+          <a class="nav-link link-dark" href="/">HOME</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link link-dark" href="{% url 'ingredients-list'%}">INGREDIENTS</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link link-dark" href="{% url 'purchases'%}">PURCHASES</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link link-dark" href="{% url 'menu-item-list' %}">MENU ITEMS</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link link-dark" href="{% url 'financial-page' %}"> FINANCES</a>
+        </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}"> <button type="button" class="btn btn-dark">Logout</button></a>
+          </li>
+      </ul>
+
+    </div>
+</nav>
+
+{% block content %}
+
+{% endblock %}
+
+
+
+</body>
+
+</html>

@@ -1,15 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> Login </title>
-</head>
-<body>
- <form action ="" method="post">
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Add menu item {% endblock %}
+
+{% block content %}
+
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-10 col-md-8 col-lg-6">
+  <form action ="" method="post">
+
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Login">
+    <div class="form-row">
+      <div class="form-group">
+    {{ form.username|as_crispy_field }}
+      </div>
+    </div>
+
+
+       <div class="form-row ">
+      <div class="form-group">
+        {{ form.password|as_crispy_field }}
+      </div>
+    </div>
+
+        <input type="submit" value="Login" class="btn btn-success w-100">
+
+
 
   </form>
-</body>
-</html>
+        <a href="{% url 'create-user' %}"> <button type="button" class="btn btn-dark w-100" style="margin-top:10px">Create Account </button></a>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+{% endblock %}
